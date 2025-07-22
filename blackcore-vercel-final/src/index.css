@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --accent: 24 80% 45%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 240 84% 65%;
+ 
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Layout components */
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  
+  /* Common utilities */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.2), 0 0 20px rgba(249, 115, 22, 0.1);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.2);
+  }
+}
+
+/* Custom gradients */
+.bg-hero-gradient {
+  background: radial-gradient(circle at top, #1a1a2e 0%, #000000 100%);
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent;
+}
+
+/* GPU grid pattern for background */
+.gpu-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(249, 115, 22, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 115, 22, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Improve accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
